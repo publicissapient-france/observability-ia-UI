@@ -1,0 +1,40 @@
+<div [hidden]="submitted" class="mainForm">
+  <h1>Observability Form</h1>
+  <form (ngSubmit)="onSubmit()" #promptForm="ngForm" id="internForm">
+
+    <div class="form-group">
+      <label for="service">Services</label>
+      <select class="form-control" id="service"
+              required
+              [(ngModel)]="model.service" name="service"
+              #service="ngModel" (change)="serviceChange()">
+        <option *ngFor="let service of services" [value]="service">{{service}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="service">Outages</label>
+      <select class="form-control" id="outage"
+              required
+              [(ngModel)]="model.outage" name="service"
+              #service="ngModel">
+        <option *ngFor="let outage of outages" [value]="outage">{{outage}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="question">Question</label>
+      <input type="text" class="form-control" id="question"
+             [(ngModel)]="model.question" name="question">
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!promptForm.form.valid">Submit</button>
+    <button type="button" class="btn btn-default" (click)="promptForm.reset()">Reset</button>
+  </form>
+
+  <div id="openAI">
+    <h1>OpenAI response</h1>
+    <div [innerHTML]="openAIResponse">
+    </div>
+  </div>
+</div>

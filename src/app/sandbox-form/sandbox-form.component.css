@@ -1,0 +1,15 @@
+.mainForm {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+#internForm{
+  width: 50%;
+}
+
+#openAI {
+  width: 50%;
+}
